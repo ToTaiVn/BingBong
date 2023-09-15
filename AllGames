@@ -5,6 +5,7 @@ local players = game:GetService("Players")
 local localPlayer = players.LocalPlayer
 local UserInputService = game:GetService("UserInputService")
 local replicatedStorage = game:GetService("ReplicatedStorage")
+local VU = game:GetService'VirtualUser'
 local heartbeatConnection
 
 local Window = OrionLib:MakeWindow({Name = "BingBong Hub Blade Ball🥎🎾 Auto Parry🎯", HidePremium = false, SaveConfig = true, IntroText = "BingBongHub", IntroEnabled = true, ConfigFolder = "BBong Blade Ball"})
@@ -113,6 +114,11 @@ local function stopAutoParry()
     end
 end
 
+function antikick()
+local bb=VU game:service'Players'.LocalPlayer.Idled:connect(function() bb:CaptureController()bb:ClickButton2(Vector2.new())
+end)
+end
+
 MainTab:AddToggle({
 	Name = "AUTO PARRY🚫",
 	Default = false,
@@ -147,3 +153,20 @@ MainTab:AddButton({
 
 
 MainTab:AddLabel("Thanks For Use Us Script Join My Discord👆")
+
+MainTab:AddButton({
+	Name = "Anti Kick",
+	Callback = function()
+      antikick()
+      if antikick then
+        OrionLib:MakeNotification({
+	Name = "Script is Runing",
+	Content = "Anti Anti Kick On",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+    end
+    end
+  })
+
+MainTab:AddLabel("Update More")
